@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسن</title>
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 91px;
+            aspect-ratio: 1.43;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            font-size: 16px;
+            color: #402f2f;
+            font-weight: 600;
+            line-height: 150%;
+        }
+
+        .nav-link {
+            font-family: 'Inter', sans-serif;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .language-dropdown {
+            position: relative;
+        }
+
+        .language-dropdown select {
+            padding: 8px 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            appearance: none;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .language-dropdown::after {
+            content: '\25BC';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        @media (max-width: 991px) {
+            .header {
+                flex-wrap: wrap;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Content Container Styles */
+        .content-container {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(to right, #0570B5, #8BC542);
+            color: #fff;
+            text-align: right;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .text-content {
+            max-width: 40%;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        /* App Block Styles */
+        .app-block {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #f7f7fa;
+            color: #000000;
+            text-align: right;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .text-download {
+            position: relative;
+            top: -20px;
+        }
+
+        .download-imagesfirst {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .download-imagesfirst a img {
+            width: 100px;
+            height: 50px;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        .images-container {
+            display: flex;
+            gap: 10px;
+            max-width: 45%;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .images-container img {
+            width: 50%;
+            height: auto;
+            border-radius: 30px;
+        }
+
+        .left-image {
+            z-index: 2;
+            position: relative;
+            top: 20px;
+        }
+
+        .right-image {
+            position: relative;
+            margin-left: -10%;
+            z-index: 1;
+        }
+
+        /* Services Styles */
+        .services-container {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .services-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .service-block {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .service-image {
+            width: 100px;
+            height: auto;
+            margin: auto;
+            border-radius: 5px;
+        }
+
+        .service-text {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .paragraph-with-line::before {
+            content: "";
+            display: block;
+            border-top: 1px solid black;
+            margin-bottom: 10px;
+        }
+
+        .service-note {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #777;
+        }
+
+        /* Partner Block Styles */
+        .partner-block {
+            background: linear-gradient(to right, #0570B5, #8BC542);
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            width: 100%;
+        }
+
+        .partner-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .download-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .download-images a img {
+            width: 100px;
+            height: 50px;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #fff;
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo img {
+            width: 70px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-media a img {
+            width: 20px;
+            height: auto;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            text-align: center;
+            color: #888;
+        }
+
+        @media screen and (max-width: 600px) {
+            .text-content {
+                max-width: 80%;
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .text-download {
+                position: relative;
+                top: -20px;
+                padding: 10px;
+                font-size: 9px;
+            }
+
+            .download-imagesfirst {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .images-container {
+                flex: 0 0 45%;
+                max-width: 100%;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+
+            .navigation {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                padding: 10px;
+                font-size: 14px;
+                background-color: #f8f9fa;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="logo-container">
+        <img src="logo.png" alt="Company Logo" class="logo"/>
+    </div>
+    <nav class="navigation">
+        <a href="#we" class="nav-link">نحن</a>
+        <a href="#service" class="nav-link">خدماتنا</a>
+        <a href="#join-us" class="nav-link">انضم لنا</a>
+        <a href="#contact" class="nav-link">التواصل</a>
+    </nav>
+    <div class="language-dropdown">
+        <select id="language-selector">
+            <option value="index.html" selected>العربية</option>
+            <option value="index-En.html">English</option>
+        </select>
+    </div>
+</div>
+
+<!-- Content Section -->
+<div class="content-container">
+    <div class="text-content" id="we">
+        <h3>رسن يشكل نقطة وصل بين المستفيد من الخدمة ومقدمها</h3>
+        <p>ويسهل الوصول لأكبر عدد من مقدمي الخدمات في وقت واحد بحيث يقوم نيابة عنك في جلب السعر الأنسب والخدمة المميزة وما عليك الا الاختيار بضغطة زر لتخدم وانت في بيتك</p>
+    </div>
+</div>
+
+<!-- App Download Section -->
+<div class="app-block">
+    <div class="text-download">
+        <h1>حمل التطبيق على جوالك واطلب خدماتك بضغطة زر</h1>
+    </div>
+    <div class="download-imagesfirst">
+        <a href="https://apps.apple.com/ae/app/rasan-%D8%B1%D8%B3%D9%86/id1672269001"><img src="appleDownload.png" alt="App Store Download"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.massarttech.android.relic.provider&pcampaignid=web_share"><img src="samsungDownload.png" alt="Google Play Download"></a>
+    </div>
+    <div class="images-container">
+        <img class="left-image" src="screen2.png" alt="App Screenshot 2">
+        <img class="right-image" src="screen1.png" alt="App Screenshot 1">
+    </div>
+</div>
+
+<!-- Services Section -->
+<div class="services-container" id="service">
+    <h4 class="services-title">خدماتنا</h4>
+    <div class="service-block">
+        <img src="service1.png" alt="Service 1" class="service-image">
+        <h1 class="service-text">توصيل طرود</h1>
+        <p class="paragraph-with-line">نقل سريع وآمن للطرود بين المواقع</p>
+    </div>
+    <div class="service-block">
+        <img src="service2.png" alt="Service 2" class="service-image">
+        <h1 class="service-text">توصيل اشخاص</h1>
+        <p class="paragraph-with-line">توفر وسيلة مريحة وآمنة لنقل الأفراد من مكان إلى آخر</p>
+    </div>
+    <div class="service-block">
+        <img src="service3.png" alt="Service 3" class="service-image">
+        <h1 class="service-text">صيانه منزليه</h1>
+        <p class="paragraph-with-line">حلول متعددة لتصليح وصيانة المنازل بفعالية وسرعة</p>
+    </div>
+    <div class="service-block">
+        <img src="service4.png" alt="Service 4" class="service-image">
+        <div class="service-note">
+            <p>هذه الخدمه غير متوفرة حاليًا</p>
+        </div>
+        <h1 class="service-text">مطاعم</h1>
+    </div>
+    <div class="service-block">
+        <img src="service5.png" alt="Service 5" class="service-image">
+        <div class="service-note">
+            <p>هذه الخدمه غير متوفرة حاليًا</p>
+        </div>
+        <h1 class="service-text">مواد غذائيه</h1>
+    </div>
+    <div class="service-block">
+        <img src="service6.png" alt="Service 6" class="service-image">
+        <div class="service-note">
+            <p>هذه الخدمه غير متوفرة حاليًا</p>
+        </div>
+        <h1 class="service-text">جمعيات خيريه</h1>
+    </div>
+    <div class="service-block">
+        <img src="service7.png" alt="Service 7" class="service-image">
+        <div class="service-note">
+            <p>هذه الخدمه غير متوفرة حاليًا</p>
+        </div>
+        <h1 class="service-text">مياه</h1>
+    </div>
+    <div class="service-block">
+        <img src="service8.png" alt="Service 8" class="service-image">
+        <div class="service-note">
+            <p>هذه الخدمة غير متوفرة حاليًا</p>
+        </div>
+        <h1 class="service-text">غاز</h1>
+    </div>
+</div>
+
+<!-- Partner Section -->
+<div class="partner-block" id="join-us">
+    <h2 class="partner-text">كن شريك معنا في الدنيا والآخرة</h2>
+    <div class="download-images">
+        <a href="https://apps.apple.com/ae/app/rasan-%D8%B1%D8%B3%D9%86/id1672269001"><img src="appleDownload.png" alt="App Store Download"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.massarttech.android.relic.provider&pcampaignid=web_share"><img src="samsungDownload.png" alt="Google Play Download"></a>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer" id="contact">
+    <div class="footer-logo">
+        <img src="logo.png" alt="Footer Logo">
+    </div>
+    <div class="social-media">
+        <a href="#"><img src="facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="x.png" alt="X (Twitter)"></a>
+        <a href="#"><img src="insta.png" alt="Instagram"></a>
+    </div>
+</footer>
+<div class="copyright">
+    <p>&copy; 2024 Rasan. All rights reserved.</p>
+</div>
+
+<script>
+    // Get the select element
+    const languageSelector = document.getElementById('language-selector');
+
+    // Add event listener to the select element
+    languageSelector.addEventListener('change', function () {
+        // Get the selected option value
+        const selectedLanguage = languageSelector.value;
+
+        // Redirect to the selected language page
+        window.location.href = selectedLanguage;
+    });
+</script>
+
+</body>
+</html>
